@@ -16,8 +16,9 @@ export async function GET(
   // Kalau sudah terverifikasi sebelumnya, langsung lempar ke halaman sukses
   // biar user nggak perlu proses update data lagi.
   if (!rsvp) {
-    return new NextResponse("Token tidak valid atau sudah kedaluwarsa.", { status: 400 });
+    redirect(`${process.env.NEXT_PUBLIC_APP_URL}/verify-error`);
   }
+  
   if (rsvp.isVerified) {
     redirect(`${process.env.NEXT_PUBLIC_APP_URL}/verify-success?rsvpId=${rsvp.id}`);
   }
@@ -30,5 +31,6 @@ export async function GET(
       isVerified: true,
     },
   });
+  
   redirect(`${process.env.NEXT_PUBLIC_APP_URL}/verify-success?rsvpId=${rsvp.id}`);
-}
+} 

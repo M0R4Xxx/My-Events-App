@@ -148,14 +148,21 @@ export function AttendeesList({ rsvps }: { rsvps: any[] }) {
                     className="min-w-0"
                 >
                     <p className="text-xs md:text-[12.5px] lg:text-[13px] text-purple-300/80 justify-start font-semibold truncate block">
-                    Submitted : {new Date(rsvp.respondedAt).toLocaleString('id-ID', {
+                    Submitted : {(() => {
+                        const date = new Date(rsvp.respondedAt);
+                        const dayPart = date.toLocaleDateString("id-ID", {
+                        weekday: 'long',
                         year: 'numeric',
-                        month: 'numeric',
-                        day: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                        });
+                        const timePart = date.toLocaleTimeString("id-ID", {
                         hour: '2-digit',
                         minute: '2-digit',
                         hour12: false
-                    })}
+                        }).replace(".", ":");
+                        return `${dayPart}, ${timePart}`;
+                    })()}
                     </p>
                 </AnimatedContent>
                 <div className="flex justify-end">

@@ -84,6 +84,15 @@ const isEditFormValid = useMemo(() => {
   );
 }, [editFormData, isDirty]);
 
+// Mendapatkan offset timezone lokal
+const formatForInput = (dateString: string | null) => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  const offset = date.getTimezoneOffset();
+  const adjustedDate = new Date(date.getTime() - (offset * 60 * 1000));
+  return adjustedDate.toISOString().slice(0, 16);
+};
+
   return (
     <>
       <div className="grid gap-4 md:grid-cols-2">
@@ -165,7 +174,14 @@ const isEditFormValid = useMemo(() => {
                     delay={0.7}
                   >
                 <p className="text-xs sm:text-sm text-purple-200/80 truncate block max-w-[97%]">
-                  {event.eventDate ? new Date(event.eventDate).toLocaleString() : "No date"} 
+                  {event.eventDate ? (
+                    (() => {
+                      const date = new Date(event.eventDate);
+                      const day = date.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
+                      const time = date.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit", hour12: false }).replace(".", ":");
+                      return `${day}, ${time}`;
+                    })()
+                  ) : "No date"}
                   {event.location ? ` • ${event.location}` : ""}
                 </p>
               </AnimatedContent>
@@ -350,7 +366,7 @@ const isEditFormValid = useMemo(() => {
                     <input 
                       type="datetime-local" 
                       name="eventDate"
-                      defaultValue={editTarget.eventDate ? new Date(editTarget.eventDate).toISOString().slice(0, 16) : ""}
+                      defaultValue={formatForInput(editTarget.eventDate)}
                       onChange={(e) => setEditFormData({ ...editFormData, eventDate: e.target.value })} 
                       className="peer w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:border-purple-500 text-white transition-all [color-scheme:dark]"
                     />

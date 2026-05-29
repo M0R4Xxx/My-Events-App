@@ -203,7 +203,23 @@ export default async function VerifySuccessPage({
                   />
                 </div>
                 <span className="flex items-center -translate-y-[2px] font-semibold">
-                  {event.eventDate ? new Date(event.eventDate).toLocaleString() : "No date"}
+                  {event.eventDate ? (
+                    (() => {
+                      const date = new Date(event.eventDate);
+                      const dayPart = date.toLocaleDateString("id-ID", {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      });
+                      const timePart = date.toLocaleTimeString("id-ID", {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: false
+                      }).replace(".", ":");
+                      return `${dayPart}, ${timePart}`;
+                    })()
+                  ) : "No date"}
                 </span>
               </div>
             </AnimatedContent>

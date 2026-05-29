@@ -56,7 +56,8 @@ export async function createEventAction(formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim();
   const location = String(formData.get("location") ?? "").trim();
-  const eventDate = String(formData.get("eventDate") ?? "").trim();
+  const eventDateStr = String(formData.get("eventDate") ?? "").trim();
+
   if (title.length < 3 || title.length > 50) {
     throw new Error("Title must be between 3 and 50 characters.");
   }
@@ -66,13 +67,23 @@ export async function createEventAction(formData: FormData) {
   if (location.length < 3 || location.length > 50) {
     throw new Error("Location must be between 3 and 50 characters.");
   }
+
+  let eventDate: Date | null = null;
+    if (eventDateStr) {
+      const parsedDate = new Date(eventDateStr);
+      if (isNaN(parsedDate.getTime())) {
+        throw new Error("Invalid date format provided.");
+      }
+      eventDate = parsedDate;
+    }
+
   const created = await prisma.event.create({
     data: {
       ownerUserId: session.data.user.id,
       title,
       description: description || null,
       location: location || null,
-      eventDate: eventDate ? new Date(eventDate) : null,
+      eventDate: eventDate,
     },
   });
 
@@ -113,7 +124,7 @@ export async function updateEventAction(eventId: string, formData: FormData) {
     const title = String(formData.get("title") ?? "").trim();
     const description = String(formData.get("description") ?? "").trim();
     const location = String(formData.get("location") ?? "").trim();
-    const eventDate = String(formData.get("eventDate") ?? "").trim();
+    const eventDateStr = String(formData.get("eventDate") ?? "").trim();
     if (title.length < 3 || title.length > 50) {
       throw new Error("Title must be between 3 and 50 characters.");
     }
@@ -124,9 +135,18 @@ export async function updateEventAction(eventId: string, formData: FormData) {
       throw new Error("Location must be between 3 and 50 characters.");
     }
 
+    let eventDate: Date | null = null;
+    if (eventDateStr) {
+      const parsedDate = new Date(eventDateStr);
+      if (isNaN(parsedDate.getTime())) {
+        throw new Error("Invalid date format provided.");
+      }
+      eventDate = parsedDate;
+    }
+    
     await prisma.event.update({
       where: { id: eventId, ownerUserId: session.data.user.id },
-      data: { title, description, location, eventDate: new Date(eventDate) },
+      data: { title, description, location, eventDate },
     });
 
     revalidatePath("/dashboard");
