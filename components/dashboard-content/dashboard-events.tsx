@@ -177,8 +177,18 @@ const formatForInput = (dateString: string | null) => {
                   {event.eventDate ? (
                     (() => {
                       const date = new Date(event.eventDate);
-                      const day = date.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
-                      const time = date.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit", hour12: false }).replace(".", ":");
+                      const day = date.toLocaleDateString("id-ID", { 
+                        day: "numeric", 
+                        month: "long", 
+                        year: "numeric",
+                        timeZone: "UTC" 
+                      });
+                      const time = date.toLocaleTimeString("id-ID", { 
+                        hour: "2-digit", 
+                        minute: "2-digit", 
+                        hour12: false,
+                        timeZone: "UTC" 
+                      }).replace(".", ":");                
                       return `${day}, ${time}`;
                     })()
                   ) : "No date"}
