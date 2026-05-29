@@ -1,22 +1,37 @@
-# My Events App
+# Event Planner App
 
-## Deskripsi Singkat
-[Tuliskan 2-3 kalimat tentang apa aplikasi ini. Contoh: Aplikasi manajemen event yang memungkinkan pengguna untuk membuat, mengelola, dan mengundang orang lain ke acara mereka dengan fitur RSVP real-time.]
+Aplikasi manajemen event untuk mempermudah RSVP dan koordinasi tamu.
 
-## Teknologi Utama
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Database:** PostgreSQL (via Neon)
-- **ORM:** Prisma
-- **Auth:** [Sebutkan metode auth Anda, misal: NextAuth.js]
-- **File Storage:** UploadThing
-- **Styling:** Tailwind CSS & Lucide React
-- **Deployment:** Vercel
+## 🚀 Akses Aplikasi
+- **Live Demo:** [https://my-events-app-flame.vercel.app/](https://my-events-app-flame.vercel.app/)
 
-## Instruksi Setup (Lokal)
-Untuk menjalankan proyek ini di komputer Anda:
+## 🛠️ Teknologi Utama
+- **Framework:** Next.js 15 (App Router)
+- **Database:** PostgreSQL (Neon) & Prisma ORM
+- **Styling:** Tailwind CSS
+- **Authentication:** JWT
+- **Storage:** UploadThing
+- **State Management:** Zustand
+
+## 📋 Fitur
+- **Pembuatan Event:** Pengguna dapat membuat event secara dinamis dengan detail acara yang lengkap.
+- **Sistem Undangan:** Menggunakan token unik untuk akses tamu yang aman dan eksklusif.
+- **RSVP Tamu:** Sistem konfirmasi kehadiran dengan verifikasi email terintegrasi.
+- **Dashboard Manajemen:** Antarmuka khusus bagi pemilik event untuk memantau status tamu dan data acara.
+
+## ⚙️ Setup Lokal
+1. Clone repositori: `git clone [url]`
+2. Install dependencies: `npm install`
+3. Salin `.env.example` ke `.env` dan isi variabelnya.
+4. Push schema ke database: `npx prisma db push`
+5. Jalankan aplikasi: `npm run dev`
+
+Untuk menjalankan aplikasi ini di lingkungan lokal Anda, ikuti langkah berikut:
 
 1. **Clone repositori:**
    ```bash
    git clone [https://github.com/M0R4Xxx/My-Events-App.git](https://github.com/M0R4Xxx/My-Events-App.git)
    cd My-Events-App
+
+## 🏗️ Arsitektur
+Aplikasi ini menerapkan pola **Server Actions** pada Next.js untuk menangani logika backend secara modular, memastikan efisiensi kode dengan prinsip **DRY** dan **SOLID**.
