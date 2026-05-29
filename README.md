@@ -55,6 +55,7 @@ git clone [https://github.com/M0R4Xxx/My-Events-App.git](https://github.com/M0R4
 cd My-Events-App
 ```
 
+
 | Halaman | Screenshot |
 | :--- | :--- |
 | **Landing Page** | ![Landing Page](assets/landing-page.jpeg) |
