@@ -82,7 +82,8 @@ export default async function VerifySuccessPage({
           </div>
         </div>
         
-        <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-center gap-6 sm:ml-8.5 mb-6">
+      <div className="justify-center px-2 sm:px-10">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-6 max-w-fit mx-auto">
           <AnimatedContent
             distance={50}
             direction="horizontal"
@@ -109,11 +110,11 @@ export default async function VerifySuccessPage({
             </div>
           </AnimatedContent>
 
-        {/* Info pembuat event */}
+          {/* Info pembuat event */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-1 w-full min-w-0">
             <h1 className="text-2xl font-bold tracking-tight w-full flex justify-center sm:justify-start">
               <div 
-                className="truncate break-words leading-tight max-w-[90%] sm:max-w-[90%]"
+                className="truncate break-words leading-tight max-w-[90%] sm:max-w-[100%]"
                 style={{ 
                   maskImage: 'linear-gradient(to right, black 85%, transparent)',
                   WebkitMaskImage: 'linear-gradient(to right, black 85%, transparent)',
@@ -132,14 +133,13 @@ export default async function VerifySuccessPage({
               </div>
             </h1>
             <div 
-              className="w-full flex justify-center sm:justify-start"
-              style={{ 
-                maskImage: 'linear-gradient(to right, black 85%, transparent)',
-                WebkitMaskImage: 'linear-gradient(to right, black 85%, transparent)',
-                overflow: 'hidden'
-              }}
-            >
-              <div className="max-w-[98%] sm:max-w-[88%] truncate">
+                className="w-full flex justify-center sm:justify-start max-w-[100%] sm:max-w-[96%] truncate"
+                style={{ 
+                  maskImage: 'linear-gradient(to right, black 85%, transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, black 85%, transparent)',
+                  overflow: 'hidden'
+                }}
+              >
                 <SplitText
                   text={owner.email}
                   className="text-purple-300/90 text-sm font-medium"
@@ -149,10 +149,10 @@ export default async function VerifySuccessPage({
                   tag="p"
                   textAlign="center"
                 />
-              </div>
             </div>
           </div>
         </div>
+      </div>
         <div 
           className="w-full h-[2px] bg-white/20 mb-6 mt-4" 
           style={{ 

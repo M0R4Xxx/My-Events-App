@@ -128,112 +128,113 @@ export default function AccountForm({ user, joinedDate }: { user: any, joinedDat
 
       { /* CARD PROFIL: Menampilkan foto avatar dan info dasar user */ }
       <div className={`${cardBase} py-8`}>
-        <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-center gap-6 sm:ml-8.5 ">
-          <AnimatedContent
-            distance={50}
-            direction="horizontal"
-            reverse={true}
-            duration={1}
-            threshold={0.1}
-            delay={0.5}
-          >
-            <div className="group/avatar relative h-24 w-24 flex-shrink-0">
-            <div className="h-24 w-24 rounded-full bg-purple-600 border-[3px] border-white/90 flex items-center justify-center shadow-[0_0_50px_15px_rgba(168,85,247,0.6)] overflow-hidden transition-all duration-300 group-hover/avatar:scale-105 cursor-pointer">
-                {tempAvatarUrl || avatarUrl ? (
-                  <img 
-                    src={tempAvatarUrl || avatarUrl} 
-                    alt="Avatar" 
-                    className="w-full h-full object-cover" 
-                  />
-                ) : (
-                  <span className="text-4xl font-bold text-white">
-                    {user.name
-                      .split(' ')
-                      .map((n: string) => n[0])
-                      .join('')
-                      .substring(0, 2)  
-                      .toUpperCase()}
-                  </span>
-                )}
+        <div className="justify-center px-2 sm:px-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 max-w-fit mx-auto">
+            <AnimatedContent
+              distance={50}
+              direction="horizontal"
+              reverse={true}
+              duration={1}
+              threshold={0.1}
+              delay={0.5}
+            >
+              <div className="group/avatar relative h-24 w-24 flex-shrink-0">
+              <div className="h-24 w-24 rounded-full bg-purple-600 border-[3px] border-white/90 flex items-center justify-center shadow-[0_0_50px_15px_rgba(168,85,247,0.6)] overflow-hidden transition-all duration-300 group-hover/avatar:scale-105 cursor-pointer">
+                  {tempAvatarUrl || avatarUrl ? (
+                    <img 
+                      src={tempAvatarUrl || avatarUrl} 
+                      alt="Avatar" 
+                      className="w-full h-full object-cover" 
+                    />
+                  ) : (
+                    <span className="text-4xl font-bold text-white">
+                      {user.name
+                        .split(' ')
+                        .map((n: string) => n[0])
+                        .join('')
+                        .substring(0, 2)  
+                        .toUpperCase()}
+                    </span>
+                  )}
 
-                  <div className="absolute inset-0 z-30 opacity-0 cursor-pointer">
-                  <UploadButton<OurFileRouter, "imageUploader">
-                    endpoint="imageUploader"
-                    onClientUploadComplete={(res) => setTempAvatarUrl(res[0].url)}
-                    appearance={{
-                      button: "!w-24 !h-24 !rounded-full !cursor-pointer",
-                      container: "!w-24 !h-24 !p-0 !m-0 !pointer-events-auto",
-                      allowedContent: "hidden",
-                    }}
-                    content={{ button: "" }}
-                  />
+                    <div className="absolute inset-0 z-30 opacity-0 cursor-pointer">
+                    <UploadButton<OurFileRouter, "imageUploader">
+                      endpoint="imageUploader"
+                      onClientUploadComplete={(res) => setTempAvatarUrl(res[0].url)}
+                      appearance={{
+                        button: "!w-24 !h-24 !rounded-full !cursor-pointer",
+                        container: "!w-24 !h-24 !p-0 !m-0 !pointer-events-auto",
+                        allowedContent: "hidden",
+                      }}
+                      content={{ button: "" }}
+                    />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 right-0 z-20 transition-all duration-300 hover:scale-110 active:scale-95 group/camera">
+                  <div className="w-8 h-8 rounded-full bg-purple-600 border-[2px] border-white/90 flex items-center justify-center text-white pointer-events-none shadow-[0_0_50px_15px_rgba(168,85,247,0.6)]">
+                    <Camera size={14} strokeWidth={3} className="transition-transform duration-300 group-hover/camera:rotate-22" />
+                  </div>
+                  <div className="absolute inset-0 opacity-0 cursor-pointer">
+                    <UploadButton<OurFileRouter, "imageUploader">
+                      endpoint="imageUploader"
+                      onClientUploadComplete={(res) => {
+                        setTempAvatarUrl(res[0].url);
+                      }}
+                      appearance={{
+                        button: "!w-8 !h-8 !p-0 !rounded-full !cursor-pointer",
+                        container: "!w-8 !h-8 !p-0 !m-0",
+                        allowedContent: "hidden",
+                      }}
+                      content={{ button: "" }}
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="absolute bottom-0 right-0 z-20 transition-all duration-300 hover:scale-110 active:scale-95 group/camera">
-                <div className="w-8 h-8 rounded-full bg-purple-600 border-[2px] border-white/90 flex items-center justify-center text-white pointer-events-none shadow-[0_0_50px_15px_rgba(168,85,247,0.6)]">
-                  <Camera size={14} strokeWidth={3} className="transition-transform duration-300 group-hover/camera:rotate-22" />
-                </div>
-                <div className="absolute inset-0 opacity-0 cursor-pointer">
-                  <UploadButton<OurFileRouter, "imageUploader">
-                    endpoint="imageUploader"
-                    onClientUploadComplete={(res) => {
-                      setTempAvatarUrl(res[0].url);
-                    }}
-                    appearance={{
-                      button: "!w-8 !h-8 !p-0 !rounded-full !cursor-pointer",
-                      container: "!w-8 !h-8 !p-0 !m-0",
-                      allowedContent: "hidden",
-                    }}
-                    content={{ button: "" }}
+            </AnimatedContent>
+            <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-1 w-full min-w-0">
+              <h1 className="text-2xl font-bold tracking-tight w-full flex justify-center sm:justify-start">
+                <div 
+                  className="truncate break-words leading-tight max-w-[90%] sm:max-w-[100%]"
+                  style={{ 
+                    maskImage: 'linear-gradient(to right, black 85%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(to right, black 85%, transparent)',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <ShinyText
+                    text={displayName}
+                    speed={5}
+                    delay={0}
+                    color="#ffffff"
+                    shineColor="#c181ff"
+                    spread={120}
+                    direction="left"
                   />
                 </div>
-              </div>
-            </div>
-          </AnimatedContent>
-          <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-1 w-full min-w-0">
-            <h1 className="text-2xl font-bold tracking-tight w-full flex justify-center sm:justify-start">
+              </h1>
               <div 
-                className="truncate break-words leading-tight max-w-[90%] sm:max-w-[90%]"
+                className="w-full flex justify-center sm:justify-start max-w-[100%] sm:max-w-[96%] truncate"
                 style={{ 
                   maskImage: 'linear-gradient(to right, black 85%, transparent)',
                   WebkitMaskImage: 'linear-gradient(to right, black 85%, transparent)',
                   overflow: 'hidden'
                 }}
               >
-                <ShinyText
-                  text={displayName}
-                  speed={5}
-                  delay={0}
-                  color="#ffffff"
-                  shineColor="#c181ff"
-                  spread={120}
-                  direction="left"
-                />
-              </div>
-            </h1>
-            <div 
-              className="w-full flex justify-center sm:justify-start"
-              style={{ 
-                maskImage: 'linear-gradient(to right, black 85%, transparent)',
-                WebkitMaskImage: 'linear-gradient(to right, black 85%, transparent)',
-                overflow: 'hidden'
-              }}
-            >
-              <div className="max-w-[98%] sm:max-w-[88%] truncate">
-                <SplitText
-                  text={user.email}
-                  className="text-purple-300/90 text-sm font-medium"
-                  delay={30}
-                  duration={1}
-                  splitType="words"
-                  tag="p"
-                  textAlign="center"
-                />
+                  <SplitText
+                    text={user.email}
+                    className="text-purple-300/90 text-sm font-medium"
+                    delay={30}
+                    duration={1}
+                    splitType="words"
+                    tag="p"
+                    textAlign="center"
+                  />
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>  
+
 
       { /* CARD DETAILS: Form untuk mengubah nama dan menampilkan info akun */ }
       <div className={`${cardBase} pt-4 pb-8`}>
