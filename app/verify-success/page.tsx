@@ -163,7 +163,7 @@ export default async function VerifySuccessPage({
 
       {/* Event details */}
         <div className="flex flex-col gap-2 min-w-0 flex-1">
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3 w-full max-w-2xl pr-14 min-w-0">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3 w-full max-w-2xl pr-14 min-w-0 px-2 sm:px-4">
             <div className="break-words hyphens-auto overflow-hidden">
               <AnimatedContent 
                 distance={30} 
@@ -195,7 +195,7 @@ export default async function VerifySuccessPage({
               threshold={0} 
               delay={0.8}
             >
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-purple-200 leading-relaxed">
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-purple-200 leading-relaxed px-2 sm:px-4">
                 <div className="group p-2 -translate-y-[2px] rounded-lg border border-white/60 bg-purple-600 hover:bg-purple-700 text-white shadow-md shadow-purple-900/40 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center shrink-0">
                   <Calendar 
                     size={16} 
@@ -217,7 +217,7 @@ export default async function VerifySuccessPage({
                 threshold={0} 
                 delay={0.9}
               >
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-purple-200 leading-tight">
+                <div className="flex items-center gap-3 text-xs sm:text-sm text-purple-200 leading-tight px-2 sm:px-4">
                   <div className="group p-2 -translate-y-[2px] rounded-lg border border-white/60 bg-purple-600 hover:bg-purple-700 text-white shadow-md shadow-purple-900/40 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center shrink-0">
                     <MapPin 
                       size={16} 
@@ -234,7 +234,8 @@ export default async function VerifySuccessPage({
 
         {/* Deskripsi event  */}
           {event.description && (
-            <div className="w-full min-w-0 mt-4 pl-4 relative mb-2 ">
+          <div className="w-full min-w-0 mt-4 px-2 sm:px-4">  
+            <div className="relative pl-4 mb-2">
               <div 
                 className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-gradient-to-b from-white to-purple-500" 
               />
@@ -274,6 +275,7 @@ export default async function VerifySuccessPage({
                   </p>
               </AnimatedContent>
             </div>
+          </div>  
           )}
            <div 
           className="w-full h-[2px] bg-white/20 mb-4 mt-3" 
