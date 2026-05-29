@@ -57,12 +57,12 @@ cd My-Events-App
 
 | Halaman | Screenshot |
 | :--- | :--- |
-| **Landing Page** | ![Landing Page](assets/landing-page) |
+| **Landing Page** | ![Landing Page](assets/landing-page.jpeg) |
 | **Dashboard** | ![Dashboard](assets/dashboard.jpeg) |
 | **Create Event** | ![Create Event](assets/create-events-form.jpeg) |
 | **Account Profile** | ![Account Profile](assets/account-profile.jpeg) |
 | **Event Detail** | ![Event Detail](assets/event-details.jpeg) |
-| **RSVP Form** | ![RSVP Form](assets/rsvp-event-form) |
-| **Undangan User** | ![Undangan User](assets/invited-events) |
+| **RSVP Form** | ![RSVP Form](assets/rsvp-event-form.jpeg) |
+| **Undangan User** | ![Undangan User](assets/invited-events.jpeg) |
 
 
