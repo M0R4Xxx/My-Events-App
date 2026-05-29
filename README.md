@@ -53,6 +53,7 @@ Lakukan clone proyek ke direktori lokal Anda melalui terminal:
 ```bash
 git clone [https://github.com/M0R4Xxx/My-Events-App.git](https://github.com/M0R4Xxx/My-Events-App.git)
 cd My-Events-App
+```
 
 | Halaman | Screenshot |
 | :--- | :--- |
@@ -63,3 +64,5 @@ cd My-Events-App
 | **Event Detail** | ![Event Detail](assets/event-details.jpeg) |
 | **RSVP Form** | ![RSVP Form](assets/rsvp-event-form) |
 | **Undangan User** | ![Undangan User](assets/invited-events) |
+
+
