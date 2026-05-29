@@ -27,8 +27,7 @@ Aplikasi manajemen event untuk mempermudah RSVP dan koordinasi tamu.
 5. Jalankan aplikasi: `npm run dev`
 
 Untuk menjalankan aplikasi ini di lingkungan lokal Anda, ikuti langkah berikut:
-
-1. **Clone repositori:**
+ **Clone repositori:**
    ```bash
    git clone [https://github.com/M0R4Xxx/My-Events-App.git](https://github.com/M0R4Xxx/My-Events-App.git)
    cd My-Events-App
