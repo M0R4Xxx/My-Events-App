@@ -20,14 +20,9 @@ Aplikasi manajemen event untuk mempermudah RSVP dan koordinasi tamu.
 - **Dashboard Manajemen:** Antarmuka khusus bagi pemilik event untuk memantau status tamu dan data acara.
 
 ## ⚙️ Setup Lokal
-1. Clone repositori: `git clone [url]`
-2. Install dependencies: `npm install`
-3. Salin `.env.example` ke `.env` dan isi variabelnya.
-4. Push schema ke database: `npx prisma db push`
-5. Jalankan aplikasi: `npm run dev`
-
 Untuk menjalankan aplikasi ini di lingkungan lokal Anda, ikuti langkah berikut:
- **Clone repositori:**
+
+1. **Clone repositori:**
    ```bash
    git clone [https://github.com/M0R4Xxx/My-Events-App.git](https://github.com/M0R4Xxx/My-Events-App.git)
    cd My-Events-App
