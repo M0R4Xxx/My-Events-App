@@ -137,7 +137,11 @@ export async function updateEventAction(eventId: string, formData: FormData) {
 
     let eventDate: Date | null = null;
     if (eventDateStr) {
-      const parsedDate = new Date(eventDateStr); 
+      const [datePart, timePart] = eventDateStr.split('T');
+      const [year, month, day] = datePart.split('-').map(Number);
+      const [hours, minutes] = timePart.split(':').map(Number);
+      
+      const parsedDate = new Date(Date.UTC(year, month - 1, day, hours - 7, minutes));
       
       if (isNaN(parsedDate.getTime())) {
         throw new Error("Invalid date format provided.");
