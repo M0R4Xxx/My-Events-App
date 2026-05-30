@@ -88,8 +88,10 @@ const isEditFormValid = useMemo(() => {
 const formatForInput = (dateString: string | null) => {
   if (!dateString) return "";
   const date = new Date(dateString);
+  
   const offset = date.getTimezoneOffset();
   const adjustedDate = new Date(date.getTime() - (offset * 60 * 1000));
+  
   return adjustedDate.toISOString().slice(0, 16);
 };
 
@@ -180,15 +182,13 @@ const formatForInput = (dateString: string | null) => {
                       const day = date.toLocaleDateString("id-ID", { 
                         day: "numeric", 
                         month: "long", 
-                        year: "numeric",
-                        timeZone: "UTC" 
+                        year: "numeric" 
                       });
                       const time = date.toLocaleTimeString("id-ID", { 
                         hour: "2-digit", 
                         minute: "2-digit", 
-                        hour12: false,
-                        timeZone: "UTC" 
-                      }).replace(".", ":");                
+                        hour12: false 
+                      }).replace(".", ":");               
                       return `${day}, ${time}`;
                     })()
                   ) : "No date"}
@@ -378,7 +378,7 @@ const formatForInput = (dateString: string | null) => {
                       name="eventDate"
                       defaultValue={formatForInput(editTarget.eventDate)}
                       onChange={(e) => setEditFormData({ ...editFormData, eventDate: e.target.value })} 
-                      className="peer w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:border-purple-500 text-white transition-all [color-scheme:dark]"
+                      className="calendar-input-custom peer w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:border-purple-500 text-white transition-all [color-scheme:dark]"
                     />
                     <Calendar strokeWidth={2.5} className="absolute left-3 inset-y-0 my-auto w-4 h-4 text-purple-400/50 transition-colors peer-focus:text-purple-500" />
                   </div>
