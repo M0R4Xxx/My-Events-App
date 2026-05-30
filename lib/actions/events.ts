@@ -155,7 +155,7 @@ export async function updateEventAction(eventId: string, formData: FormData) {
     });
 
     revalidatePath("/dashboard");
-  return { success: true };
+    return { success: true };
     } catch (error) {
       console.error("[Update Event Error]:", error);
       throw new Error("Gagal mengupdate event. Silakan coba lagi nanti.");

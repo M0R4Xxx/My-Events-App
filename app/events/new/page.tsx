@@ -160,7 +160,7 @@ export default function NewEventPage() {
                   min={minDateTime}
                   value={eventDate} 
                   onChange={(e) => setEventDate(e.target.value)} 
-                  className="calendar-input-custom peer w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:border-purple-500 text-white transition-all [color-scheme:dark]"
+                  className="peer w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:border-purple-500 text-white transition-all [color-scheme:dark]"
                 />
                 <Calendar strokeWidth={2.5} className="absolute left-3 inset-y-0 my-auto w-4 h-4 text-purple-400/50 transition-colors peer-focus:text-purple-500" />
               </div>
