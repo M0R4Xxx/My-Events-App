@@ -210,12 +210,14 @@ export default async function VerifySuccessPage({
                         weekday: 'long',
                         year: 'numeric',
                         month: 'long',
-                        day: 'numeric'
+                        day: 'numeric',
+                        timeZone: "Asia/Jakarta"
                       });
                       const timePart = date.toLocaleTimeString("id-ID", {
                         hour: '2-digit',
                         minute: '2-digit',
-                        hour12: false
+                        hour12: false,
+                        timeZone: "Asia/Jakarta"
                       }).replace(".", ":");
                       return `${dayPart}, ${timePart}`;
                     })()

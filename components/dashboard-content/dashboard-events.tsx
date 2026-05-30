@@ -87,12 +87,20 @@ const isEditFormValid = useMemo(() => {
 // Mendapatkan offset timezone lokal
 const formatForInput = (dateString: string | null) => {
   if (!dateString) return "";
+  
   const date = new Date(dateString);
   
-  const offset = date.getTimezoneOffset();
-  const adjustedDate = new Date(date.getTime() - (offset * 60 * 1000));
+  const wibDate = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Jakarta" }));
   
-  return adjustedDate.toISOString().slice(0, 16);
+  const pad = (n: number) => n.toString().padStart(2, '0');
+  
+  const year = wibDate.getFullYear();
+  const month = pad(wibDate.getMonth() + 1);
+  const day = pad(wibDate.getDate());
+  const hours = pad(wibDate.getHours());
+  const minutes = pad(wibDate.getMinutes());
+  
+  return `${year}-${month}-${day}T${hours}:${minutes}`;
 };
 
   return (
@@ -182,13 +190,15 @@ const formatForInput = (dateString: string | null) => {
                       const day = date.toLocaleDateString("id-ID", { 
                         day: "numeric", 
                         month: "long", 
-                        year: "numeric" 
+                        year: "numeric",
+                        timeZone: "Asia/Jakarta"
                       });
                       const time = date.toLocaleTimeString("id-ID", { 
                         hour: "2-digit", 
                         minute: "2-digit", 
-                        hour12: false 
-                      }).replace(".", ":");               
+                        hour12: false,
+                        timeZone: "Asia/Jakarta"
+                      }).replace(".", ":");             
                       return `${day}, ${time}`;
                     })()
                   ) : "No date"}
