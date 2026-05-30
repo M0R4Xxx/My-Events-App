@@ -137,11 +137,12 @@ export async function updateEventAction(eventId: string, formData: FormData) {
 
     let eventDate: Date | null = null;
     if (eventDateStr) {
-      const parsedDate = new Date(eventDateStr);
+      const parsedDate = new Date(eventDateStr); 
+      
       if (isNaN(parsedDate.getTime())) {
         throw new Error("Invalid date format provided.");
       }
-      eventDate = parsedDate;
+      eventDate = parsedDate; 
     }
     
     await prisma.event.update({
@@ -154,7 +155,7 @@ export async function updateEventAction(eventId: string, formData: FormData) {
     } catch (error) {
       console.error("[Update Event Error]:", error);
       throw new Error("Gagal mengupdate event. Silakan coba lagi nanti.");
-    }
+  }
 }
 
 /* Server action: Membuat token unik untuk link undangan event */

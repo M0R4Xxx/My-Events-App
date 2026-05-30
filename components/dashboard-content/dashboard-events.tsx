@@ -87,19 +87,23 @@ const isEditFormValid = useMemo(() => {
 // Mendapatkan offset timezone lokal
 const formatForInput = (dateString: string | null) => {
   if (!dateString) return "";
-  
+
+  // 1. Buat objek Date dari data (biasanya UTC dari database)
   const date = new Date(dateString);
-  
-  const wibDate = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Jakarta" }));
-  
-  const pad = (n: number) => n.toString().padStart(2, '0');
-  
+
+  // 2. Konversi ke string dengan timeZone Asia/Jakarta
+  // Ini akan menghasilkan string tanggal/waktu sesuai WIB
+  const wibString = date.toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
+  const wibDate = new Date(wibString);
+
+  // 3. Ambil komponen waktunya
   const year = wibDate.getFullYear();
-  const month = pad(wibDate.getMonth() + 1);
-  const day = pad(wibDate.getDate());
-  const hours = pad(wibDate.getHours());
-  const minutes = pad(wibDate.getMinutes());
-  
+  const month = (wibDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = wibDate.getDate().toString().padStart(2, '0');
+  const hours = wibDate.getHours().toString().padStart(2, '0');
+  const minutes = wibDate.getMinutes().toString().padStart(2, '0');
+
+  // Format untuk <input type="datetime-local" /> adalah YYYY-MM-DDThh:mm
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 };
 
@@ -314,7 +318,8 @@ const formatForInput = (dateString: string | null) => {
                       return { 
                         ...e, 
                         ...data, 
-                        eventDate: data.eventDate ? new Date(data.eventDate as string) : null 
+                        // Ganti bagian ini di dalam setEvents
+                        eventDate: data.eventDate ? new Date(data.eventDate as string) : null
                       };
                     }
                     return e;
