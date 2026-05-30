@@ -19,7 +19,7 @@ export default function VerifyErrorPage() {
           delay={0.2}
         >
           <div className="flex justify-center mb-4">
-            <XCircle size={48} className="text-purple-100 transition-colors duration-300 ease-in-out group-hover/icon:text-purple-500" />
+            <XCircle size={48} className="text-purple-100 transition-colors duration-300 ease-in-out group-hover/icon:text-purple-200" />
           </div>
 
           <h2 className="text-2xl font-bold text-center mb-2">
